@@ -6,15 +6,15 @@ This is a data structure course project of Shanghai University, given by 朱能�
 
 The author of the origin project is JamesNULLiu, Lrf8182, 
 
-This project is based on [Apache-2.0](https://github.com/jamesnulliu/SHU_DS_znj_Project01/blob/main/LICENSE) License.
+This project is based on Apache-2.0 License.
 
 According to this license, you can use the involved codes for free.
 
 But you **MUST** **NOT** fully copy the project and make it as your own course project.
 
-You **MUST** add a completely same and intact copy of the file LICENSE to your project if you are using relevant codes.
+You **MUST** add a completely same and intact copy of the file [LICENSE](https://github.com/jamesnulliu/SHU_DS_znj_Project01/blob/main/LICENSE) to your project if you are using relevant codes.
 
-**Check *Proj01_Report.pdf* for more information about this project.**
+**Check [*Proj01_Report.pdf*](https://github.com/jamesnulliu/SHU_DS_znj_Project01/blob/main/report/Proj01_Report.pdf) for more information about this project.**
 
 ## Project Content
 
