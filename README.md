@@ -6,7 +6,7 @@ This is a data structure course project of Shanghai University, given by 朱能�
 
 The author of the origin project is JamesNULLiu, Lrf8182, 
 
-This project is based on Apache License 2.0.
+This project is based on [Apache-2.0](https://github.com/jamesnulliu/SHU_DS_znj_Project01/blob/main/LICENSE) License.
 
 According to this license, you can use the involved codes for free.
 
