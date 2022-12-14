@@ -4,7 +4,7 @@
 
 This is a data structure course project of Shanghai University, given by 朱能军.
 
-The author of the origin project is JamesNULLiu, Lrf8182, 
+The authors of the origin project are JamesNULLiu, Lrf8182, Pedestrian0626
 
 This project is based on Apache-2.0 License.
 
