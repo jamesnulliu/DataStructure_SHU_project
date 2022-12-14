@@ -6,6 +6,8 @@ This is a data structure course project of Shanghai University, given by 朱能�
 
 The authors of the origin project are JamesNULLiu, Lrf8182, Pedestrian0626
 
+All the codes are fully C++ and under the standard of C++20.
+
 This project is based on Apache-2.0 License.
 
 According to this license, you can use the involved codes for free.
