@@ -30,39 +30,28 @@ string Q01_stack(const vector<int>& target)
     arrayStack<int> stack;
     int d, No;//d is target ,No is initial sequence
     No = 1;
-    for (int i = 0; i < target.size(); i++)
-    {
+    for (int i = 0; i < target.size(); i++) {
         d = target[i];
-        if (!stack.empty()&&stack.top()==d)
-        {
+        if (!stack.empty() && stack.top() == d) {
             cout << "第" << stack.top() << "号从辅轨道进入主轨道右边。" << endl;
             stack.pop();
-        }
-        else if(No<=d)
-        {
-            while (No<=target.size() && No < d)
-            {
+        } else if (No <= d) {
+            while (No <= target.size() && No < d) {
                 cout << "第" << No << "号从主轨道左边进入辅轨道。" << endl;
                 stack.push(No++);
             }
-            if (No==d)
-            {
+            if (No == d) {
                 cout << "第" << No << "号从主轨道左边进入主轨道右边。" << endl;
                 No++;
             }
-        }
-        else
-        {
+        } else {
             break;
         }
     }
-    if (stack.empty())
-    {
+    if (stack.empty()) {
         cout << "调度完成" << endl;
-    }
-    else
-    {
-        cout<<"调度无法完成" << endl;
+    } else {
+        cout << "调度无法完成" << endl;
     }
     return "test";
 }
