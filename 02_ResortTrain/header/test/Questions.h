@@ -40,3 +40,5 @@ string Q01_stack(const vector<int>& target);
  * @return If sort succeed, return the procedure; If failed, return {"IMPOSSIBLE"}.
 */
 string Q02_stack(const vector<int>& input);
+
+string Q03_stack(const vector<int>& input, const vector<int>& target);

@@ -4,8 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # ignore main
-*.main.cpp
-*main.cpp
+**/.main.cpp
+**/main.cpp
 
 # User-specific files
 *.rsuser
@@ -36,7 +36,7 @@ bld/
 [Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
-.vs/
+**/.vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
 
