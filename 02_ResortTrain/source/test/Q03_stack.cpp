@@ -15,15 +15,15 @@ string Q03_stack(const vector<int>& input, const vector<int>& target)
 
     while (j < target.size()) {
         if (i < input.size() && input[i] == target[j]) {
-            procedure += string("* Drive ") + to_string(input[i]) + " from input rail to output rail.\n";
+            procedure += string("* Move ") + to_string(input[i]) + " from input rail to output rail.\n";
             ++i;
             ++j;
         } else if (!stack.empty() && stack.top() == target[j]) {
-            procedure += string("* Drive ") + to_string(stack.top()) + " from stack rail to output rail.\n";
+            procedure += string("* Move ") + to_string(stack.top()) + " from stack rail to output rail.\n";
             stack.pop();
             ++j;
         } else if (i < input.size()) {
-            procedure += string("* Drive ") + to_string(input[i]) + " from input rail to stack rail.\n";
+            procedure += string("* Move ") + to_string(input[i]) + " from input rail to stack rail.\n";
             stack.push(input[i]);
             ++i;
         } else {
