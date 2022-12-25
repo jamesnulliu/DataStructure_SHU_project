@@ -29,25 +29,35 @@ string Q01_stack(const vector<int>& target)
     // @}
     arrayStack<int> stack;
     int d, No;//d is target ,No is initial sequence
+    string process;
     No = 1;
     for (int i = 0; i < target.size(); i++)
     {
         d = target[i];
         if (!stack.empty()&&stack.top()==d)
         {
-            cout << "第" << stack.top() << "号从辅轨道进入主轨道右边。" << endl;
+            process += "第";
+            process += to_string(stack.top());
+            process += "号从辅轨道进入主轨道右边。";
+            process += "\n";
             stack.pop();
         }
         else if(No<=d)
         {
             while (No<=target.size() && No < d)
             {
-                cout << "第" << No << "号从主轨道左边进入辅轨道。" << endl;
+                process += "第";
+                process += to_string(No);
+                process += "号从主轨道左边进入辅轨道。";
+                process += "\n";
                 stack.push(No++);
             }
             if (No==d)
             {
-                cout << "第" << No << "号从主轨道左边进入主轨道右边。" << endl;
+                process += "第";
+                process += to_string(No);
+                process += "号从主轨道左边进入主轨道右边。";
+                process += "\n";
                 No++;
             }
         }
@@ -56,13 +66,9 @@ string Q01_stack(const vector<int>& target)
             break;
         }
     }
-    if (stack.empty())
+    if (!stack.empty())
     {
-        cout << "调度完成" << endl;
+        process="调度无法完成";
     }
-    else
-    {
-        cout<<"调度无法完成" << endl;
-    }
-    return "test";
+    return process;
 }

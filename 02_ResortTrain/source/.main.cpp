@@ -2,6 +2,6 @@
 
 int main()
 {
-    Q01_stack({});
-    Q02_stack({});
+   cout<< Q01_stack({3,2,1});
+    //Q02_stack({});
 }
