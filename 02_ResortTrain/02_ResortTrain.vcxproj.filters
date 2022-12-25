@@ -24,6 +24,9 @@
     <ClCompile Include="source\test\Q02_stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\test\Q03_stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\test\Questions.h">
