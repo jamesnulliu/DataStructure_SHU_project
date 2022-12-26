@@ -24,17 +24,30 @@ using namespace std;
 */
 string Q02_stack(const vector<int>& input)
 {
-    // Initialize train {target}: @{
-    vector<int> target(input.size());
-    for (size_t i = 1; i <= target.size(); ++i) { target[i - 1] = static_cast<int>(i); }
-    // @}
-    arrayStack<int> stack;
-    stack.push(1);
-    stack.push(2);
-    stack.push(3);
-    while (!stack.empty()) {
-        cout << stack.top();
-        stack.pop();
+   
+        arrayStack<int> stack;
+        string procedure;
+
+        int i = 0; // The index of the first remaining carriage (the carrige to pop next time) on the input rail.
+        int j = 1; // The index of the requiring carriage on the output rail.
+
+        while (j <=input.size()) {
+            if (i < input.size() && input[i] == j) {
+                procedure += string("* Move ") + to_string(input[i]) + " from input rail to output rail.\n";
+                ++i;
+                ++j;
+            } else if (!stack.empty() && stack.top() == j) {
+                procedure += string("* Move ") + to_string(stack.top()) + " from stack rail to output rail.\n";
+                stack.pop();
+                ++j;
+            } else if (i < input.size()) {
+                procedure += string("* Move ") + to_string(input[i]) + " from input rail to stack rail.\n";
+                stack.push(input[i]);
+                ++i;
+            } else {
+                return "IMPOSSIBLE\n";
+            }
+        }
+        std::cout << procedure;
+        return procedure;
     }
-    return "test";
-}
