@@ -1,8 +1,10 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "../../header/stack/arrayStack.h"
-#include "../../header/test/Questions.h"
+#include "../stack/arrayStack.h"
+#include "Solution.h"
+
+S01 S01::_solution;
 
 using namespace std;
 /**
@@ -21,7 +23,7 @@ using namespace std;
  * @param target Target train sequence.
  * @return If sort succeed, return the procedure; If failed, return {"IMPOSSIBLE"}.
 */
-string Q01_stack(const vector<int>& target)
+string S01::solve(const vector<int>& target) const
 {
     // Initialize train {input}: @{
     vector<int> input(target.size());
@@ -31,44 +33,35 @@ string Q01_stack(const vector<int>& target)
     int d, No;//d is target ,No is initial sequence
     string process;
     No = 1;
-    for (int i = 0; i < target.size(); i++)
-    {
+    for (int i = 0; i < target.size(); i++) {
         d = target[i];
-        if (!stack.empty()&&stack.top()==d)
-        {
+        if (!stack.empty() && stack.top() == d) {
             process += "第";
             process += to_string(stack.top());
             process += "号从辅轨道进入主轨道右边。";
             process += "\n";
             stack.pop();
-        }
-        else if(No<=d)
-        {
-            while (No<=target.size() && No < d)
-            {
+        } else if (No <= d) {
+            while (No <= target.size() && No < d) {
                 process += "第";
                 process += to_string(No);
                 process += "号从主轨道左边进入辅轨道。";
                 process += "\n";
                 stack.push(No++);
             }
-            if (No==d)
-            {
+            if (No == d) {
                 process += "第";
                 process += to_string(No);
                 process += "号从主轨道左边进入主轨道右边。";
                 process += "\n";
                 No++;
             }
-        }
-        else
-        {
+        } else {
             break;
         }
     }
-    if (!stack.empty())
-    {
-        process="调度无法完成";
+    if (!stack.empty()) {
+        process = "调度无法完成";
     }
     return process;
 }

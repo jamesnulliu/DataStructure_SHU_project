@@ -1,11 +1,13 @@
-#include "../../header/stack/arrayStack.h"
-#include "../../header/test/Questions.h"
 #include <string>
 #include <vector>
+#include "../stack/arrayStack.h"
+#include "Solution.h"
+
+S03 S03::_solution;
 
 using namespace std;
 
-string Q03_stack(const vector<int>& input, const vector<int>& target)
+string S03::solve(const vector<int>& input, const vector<int>& target) const
 {
     arrayStack<int> stack;
     string procedure;

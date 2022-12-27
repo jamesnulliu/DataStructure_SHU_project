@@ -18,33 +18,51 @@
     <ClCompile Include="source\.main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\test\Q01_stack.cpp">
+    <ClCompile Include="test\Q01_stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\test\Q02_stack.cpp">
+    <ClCompile Include="test\Q02_stack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\test\Q03_stack.cpp">
+    <ClCompile Include="test\Q03_stack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\ConsoleSetting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test\Q00_exit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\ColorIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\test\Questions.h">
+    <ClInclude Include="stack\arrayStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\stack\arrayStack.h">
+    <ClInclude Include="stack\Chain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\stack\Chain.h">
+    <ClInclude Include="stack\linkedStack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\stack\linkedStack.h">
+    <ClInclude Include="stack\myExceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\stack\myExceptions.h">
+    <ClInclude Include="stack\stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header\stack\stack.h">
+    <ClInclude Include="Tools\timeCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\ConsoleSetting.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test\Solution.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\ColorIO.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

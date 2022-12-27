@@ -127,18 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="test\Q00_exit.cpp" />
+    <ClCompile Include="Tools\ColorIO.cpp" />
+    <ClCompile Include="Tools\ConsoleSetting.cpp" />
     <ClCompile Include="source\.main.cpp" />
-    <ClCompile Include="source\test\Q01_stack.cpp" />
-    <ClCompile Include="source\test\Q02_stack.cpp" />
-    <ClCompile Include="source\test\Q03_stack.cpp" />
+    <ClCompile Include="test\Q01_stack.cpp" />
+    <ClCompile Include="test\Q02_stack.cpp" />
+    <ClCompile Include="test\Q03_stack.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\stack\arrayStack.h" />
-    <ClInclude Include="header\stack\Chain.h" />
-    <ClInclude Include="header\stack\linkedStack.h" />
-    <ClInclude Include="header\stack\myExceptions.h" />
-    <ClInclude Include="header\stack\stack.h" />
-    <ClInclude Include="header\test\Questions.h" />
+    <ClInclude Include="stack\arrayStack.h" />
+    <ClInclude Include="stack\Chain.h" />
+    <ClInclude Include="stack\linkedStack.h" />
+    <ClInclude Include="stack\myExceptions.h" />
+    <ClInclude Include="stack\stack.h" />
+    <ClInclude Include="test\Solution.h" />
+    <ClInclude Include="Tools\ColorIO.hpp" />
+    <ClInclude Include="Tools\ConsoleSetting.h" />
+    <ClInclude Include="Tools\timeCounter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
