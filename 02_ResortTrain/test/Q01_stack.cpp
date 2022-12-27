@@ -61,7 +61,7 @@ string S01::solve(const vector<int>& target) const
         }
     }
     if (!stack.empty()) {
-        process = "调度无法完成";
+        process = "调度无法完成\n";
     }
     return process;
 }
