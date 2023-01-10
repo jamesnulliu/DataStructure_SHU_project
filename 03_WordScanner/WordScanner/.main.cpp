@@ -10,8 +10,8 @@ std::ifstream targetFile;
 std::ifstream patternFile;
 
 int main() {
+    // Open target file.
     std::string targetName;
-    std::string patternName;
     scui::cout(6) << "Enter target file name: ";
     scui::cin(4) >> targetName;
     scui::cin().ignore();
@@ -20,11 +20,21 @@ int main() {
         scui::cout(6) << "Unable to open file \"" << targetName << "\", please enter again! : ";
         scui::cin(4) >> targetName;
         scui::cin().ignore();
+        targetFile.open(targetName);
     }
+
+    // Open pattern file.
+    std::string patternName;
     scui::cout(6) << "Enter pattern file name: ";
     scui::cin(4) >> patternName;
     scui::cin().ignore();
     patternFile.open(patternName);
+    while (patternFile.fail()) {
+        scui::cout(6) << "Unable to open file \"" << patternName << "\", please enter again! : ";
+        scui::cin(4) >> patternName;
+        scui::cin().ignore();
+        patternFile.open(patternName);
+    }
 
     // Store all pattern words to a vector.
     std::vector<std::string> pattern;
@@ -53,18 +63,19 @@ int main() {
             // If {result} is not empty:
             if (result.size()) {
                 scui::cout(6) << "\t| Line " << i + 1 << ": ";
-            }
-
-            // Print all the found position:
-            for (auto position : result) {
-                scui::cout() << position << " ";
+                // Print all the found position:
+                for (auto position : result) {
+                    scui::cout() << position + 1 << " ";
+                }
+                putchar('\n');
             }
 
             // Update the number of found words:
             sum += result.size();
         }
 
-        scui::cout(6) << "TOTAL: " << sum;
+        scui::cout(6) << "TOTAL: ";
+        scui::cout() << sum;
         scui::cout(6) << "\n------------------------------\n";
     }
     std::cin.get();

@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="String\ChangeLength1D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="String\KMP.h">
       <Filter>Header Files</Filter>
     </ClInclude>

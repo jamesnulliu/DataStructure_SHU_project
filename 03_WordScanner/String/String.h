@@ -3,7 +3,6 @@
 #include <string>
 #include <iterator>
 #include <algorithm>
-#include "ChangeLength1D.h"
 
 constexpr auto INITIAL_CAPACITY = 10;
 
