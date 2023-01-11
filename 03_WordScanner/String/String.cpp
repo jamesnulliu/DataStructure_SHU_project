@@ -1,6 +1,6 @@
 #include "String.h"
 
-std::ostream& operator<<(std::ostream& out, String& str)
+std::ostream& operator<<(std::ostream& out, const String& str)
 {
     out << str.c_str();
     return out;

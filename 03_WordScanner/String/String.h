@@ -9,7 +9,7 @@ constexpr auto INITIAL_CAPACITY = 10;
 
 class String; // declaration
 
-std::ostream& operator<<(std::ostream& out, String& str);
+std::ostream& operator<<(std::ostream& out, const String& str);
 std::istream& operator>>(std::istream& in, String& str);
 
 class String
@@ -55,8 +55,7 @@ public:
     String operator+(const String& str) const;
     String operator+=(const String& str);
 
-    template<class _Elem, class _Traits>
-    std::basic_istream<_Elem, _Traits>& getline(std::basic_istream<_Elem, _Traits>& in) {
+    std::istream& getline(std::istream& in) {
         std::string temp;
         std::getline(in, temp);
         (*this) = temp;

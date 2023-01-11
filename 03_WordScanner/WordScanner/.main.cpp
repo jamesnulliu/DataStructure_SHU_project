@@ -9,6 +9,9 @@
 std::ifstream targetFile;
 std::ifstream patternFile;
 
+void test(std::istream& a) {
+}
+
 int main() {
     // Open target file.
     String targetName;
@@ -39,7 +42,7 @@ int main() {
     // Store all pattern words to a vector.
     std::vector<String> pattern;
     String temp;
-    while (patternFile >> temp) {
+    while (temp.getline(patternFile)) {
         pattern.push_back(temp);
     }
 
@@ -71,7 +74,7 @@ int main() {
             }
 
             // Update the number of found words:
-            sum += result.size();
+            sum += (int)result.size();
         }
 
         scui::cout(6) << "TOTAL: ";
