@@ -11,42 +11,42 @@ std::ifstream patternFile;
 
 int main() {
     // Open target file.
-    std::string targetName;
+    String targetName;
     scui::cout(6) << "Enter target file name: ";
     scui::cin(4) >> targetName;
     scui::cin().ignore();
-    targetFile.open(targetName);
+    targetFile.open(targetName.c_str());
     while (targetFile.fail()) {
         scui::cout(6) << "Unable to open file \"" << targetName << "\", please enter again! : ";
         scui::cin(4) >> targetName;
         scui::cin().ignore();
-        targetFile.open(targetName);
+        targetFile.open(targetName.c_str());
     }
 
     // Open pattern file.
-    std::string patternName;
+    String patternName;
     scui::cout(6) << "Enter pattern file name: ";
     scui::cin(4) >> patternName;
     scui::cin().ignore();
-    patternFile.open(patternName);
+    patternFile.open(patternName.c_str());
     while (patternFile.fail()) {
         scui::cout(6) << "Unable to open file \"" << patternName << "\", please enter again! : ";
         scui::cin(4) >> patternName;
         scui::cin().ignore();
-        patternFile.open(patternName);
+        patternFile.open(patternName.c_str());
     }
 
     // Store all pattern words to a vector.
-    std::vector<std::string> pattern;
-    std::string temp;
+    std::vector<String> pattern;
+    String temp;
     while (patternFile >> temp) {
         pattern.push_back(temp);
     }
 
     // Store the file to a string vector in splited lines.
-    std::vector<std::string> file;
-    std::string splitedLines;
-    while (std::getline(targetFile, splitedLines)) {
+    std::vector<String> file;
+    String splitedLines;
+    while (splitedLines.getline(targetFile)) {
         file.push_back(splitedLines);
     }
 
