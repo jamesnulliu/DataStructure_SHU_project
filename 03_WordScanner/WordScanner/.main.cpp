@@ -62,7 +62,7 @@ int main() {
             std::vector<int> result = KMP(file[i], pat);
             // If {result} is not empty:
             if (result.size()) {
-                scui::cout(6) << "\t| Line " << i + 1 << ": ";
+                scui::cout(6) << "    | Line " << i + 1 << ": ";
                 // Print all the found position:
                 for (auto position : result) {
                     scui::cout() << position + 1 << " ";
