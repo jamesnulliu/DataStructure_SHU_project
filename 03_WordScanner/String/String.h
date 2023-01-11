@@ -9,7 +9,7 @@ constexpr auto INITIAL_CAPACITY = 10;
 
 class String; // declaration
 
-std::ostream& operator<<(std::ostream& out, const String& str);
+std::ostream& operator<<(std::ostream& out, String& str);
 std::istream& operator>>(std::istream& in, String& str);
 
 class String
