@@ -29,6 +29,7 @@ int main() {
             case 'b':case 'B': {
                 Q_02_refresh();
                 Q_02_solve();
+                break;
             }
             case 26: { throw - 1; break; }
             default: { break; }
