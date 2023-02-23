@@ -1,12 +1,15 @@
 #include "Solution.h"
 #include <string>
 #include <iostream>
+
 #include <vector>
+
 using namespace std;
 
 struct node
 {
     int data;
+
     node* left;
     node* right;
 };
@@ -22,9 +25,11 @@ void write1(node* root, vector<int>& vec, int& i)
     root->right = new node;
     write1(root->left, vec, ++i);
     write1(root->right, vec, ++i);
+
 }
 
 int i = 0;
+
 
 void write(node* root, vector<int>& vec)
 {
@@ -47,11 +52,13 @@ void write(node* root, vector<int>& vec)
 }
 
 node* root = new node;
+
 void Q_01_refresh()
 {
     system("cls");
     string str;
     cout << "Please input the tree: ";
+
     vector<int> vec;
     while (cin.good()) {
         int data; cin >> data;
@@ -67,6 +74,7 @@ void reverse(node* root)
     reverse(root->left);
     reverse(root->right);
     node* t = root->left;
+
     root->left = root->right;
     root->right = t;
 }
