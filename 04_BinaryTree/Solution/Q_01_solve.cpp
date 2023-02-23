@@ -1,70 +1,80 @@
 #include "Solution.h"
 #include <string>
 #include <iostream>
+
+#include <vector>
+
 using namespace std;
 
 struct node
 {
     int data;
-    node *left;
-    node *right;
+
+    node* left;
+    node* right;
 };
 
-void write1(node *root, string &str, int &i)
+void write1(node* root, vector<int>& vec, int& i)
 {
-    if(str[i]=='#'){
+    if (vec[i] == '#') {
         delete root;
         return;
     }
-    root->data=str[i];
-    root->left=new node;
-    root->right=new node;
-    write1(root->left,str,++i);
-    write1(root->right,str,++i);
+    root->data = vec[i];
+    root->left = new node;
+    root->right = new node;
+    write1(root->left, vec, ++i);
+    write1(root->right, vec, ++i);
+
 }
 
 int i = 0;
 
-void write(node *root, string &str)
-{
 
-    if (str[i] == '#')
-    {
+void write(node* root, vector<int>& vec)
+{
+    if (vec[i] == '#') {
         delete root;
         return;
     }
-    root->data = str[i];
+    root->data = vec[i];
     ++i;
-    if (str[i + 1] != '#')
-    {
+    int a = i;
+    if (vec[a + 1] != '#') {
         root->left = new node;
-        write(root->left, str);
+        write(root->left, vec);
     }
     ++i;
-    if (str[i + 2] != '#')
-    {
+    if (vec[a + 2] != '#') {
         root->right = new node;
-        write(root->right, str);
+        write(root->right, vec);
     }
 }
 
-node *root = new node;
+node* root = new node;
+
 void Q_01_refresh()
 {
     system("cls");
     string str;
     cout << "Please input the tree: ";
-    cin >> str;
-    write(root, str);
+
+    vector<int> vec;
+    while (cin.good()) {
+        int data; cin >> data;
+        vec.push_back(data);
+    }
+    write(root, vec);
 }
 
-void reverse(node *root)
+void reverse(node* root)
 {
     if (root->left && root->right == nullptr)
         return;
     reverse(root->left);
     reverse(root->right);
-    node *t = root->left;
+    node* t = root->left;
+
     root->left = root->right;
     root->right = t;
 }
