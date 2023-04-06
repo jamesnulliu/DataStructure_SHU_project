@@ -86,16 +86,25 @@ public:
 private:
     // @brief Split a string to several istringstreams by detecting '[' and ']'.
     std::vector<std::istringstream> spliter(const std::string& str) {
-        std::vector<std::istringstream> istreamQueue{};
-        std::string tempStr{};
-        for (auto ch : str) {  // Split {str}
+
+        // Preprocess {str}, get rid of spaces at head:
+        auto it = str.begin();
+        while (it != str.end() && *it == ' ') { ++it; }
+        if (it == str.end()) return {};  // There is nothing except ' ' in input string
+
+        std::string tempStr(it, str.end());
+        std::vector<std::istringstream> istrQueue{};
+
+        for (auto ch : str) {  // Split {tempStr}
             switch (ch) {
             case '[': { tempStr.clear(); break; }
-            case ']': { istreamQueue.emplace_back(tempStr); break; }
+            case ']': { istrQueue.emplace_back(tempStr); break; }
+            case '#': { return istrQueue; }
             default: { tempStr += ch; break; }
             }
         }
-        return istreamQueue;
+
+        return istrQueue;
     }
 
     // @brief Get a line from console input, and return a vector of splited istringstreams.

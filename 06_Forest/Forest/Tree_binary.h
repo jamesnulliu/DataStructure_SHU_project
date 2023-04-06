@@ -94,6 +94,5 @@ void Tree_binary<_ElemTy>::rec_count_leaves(const_NodePtr root, int64_t& cnt) co
 template<class _ElemTy>
 int64_t Tree_binary<_ElemTy>::rec_count_height(const_NodePtr root) const {
     if (root == nullptr) { return 0; }
-    if (root->child == nullptr) { return 1; }  // Leaves
     return std::max(rec_count_height(root->child) + 1, rec_count_height(root->sibling));
 }

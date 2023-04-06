@@ -42,19 +42,11 @@ public:
     }
 
     int64_t count_forestHeight() const {
-        int64_t maxHeight{ 0 };
-        for (auto root = Base::_root; root != nullptr; root = root->sibling) {
-            maxHeight = std::max(maxHeight, Base::count_height(root));
-        }
-        return maxHeight;
+        return Base::count_height();
     }
 
     int64_t count_forestLeaves() const {
-        int64_t sum{ 0 };
-        for (auto root = Base::_root; root != nullptr; root = root->sibling) {
-            sum += Base::count_leaves(root);
-        }
-        return sum;
+        return Base::count_leaves();
     }
 
 private:

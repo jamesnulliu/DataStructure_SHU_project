@@ -67,6 +67,7 @@ public:
         sgc::cout(6) << "|| Task 4 ||\n";
         sgc::cout() << "[SYS] Input file location: ";
         sgc::cin(2) >> fileLoc;
+        sgc::flushInputBuffer();
         try {
             int option{};
             do {
@@ -84,8 +85,9 @@ public:
                     << " 8 Count number of leaves of the tranformed binary tree \n";
                 sgc::cout(6) << ">>> ";
                 sgc::cin(2) >> option;
+                if (option == 0) return true;
                 sgc::flushInputBuffer();
-                while (option < 0 || option >8) {
+                while (option < 1 || option >8) {
                     sgc::cout(3) << "[SYS] Not a valid task number, try again!\n";
                     sgc::cout(2) << ">>> ";
                     sgc::cin(2) >> option;
@@ -94,7 +96,9 @@ public:
             } while (solve(fileLoc, option));
         } catch (const char* e) {
             sgc::cout(3) << "[SYS] " << e << '\n';
-            return false;
+            std::cin.get();
+            system("cls");
+            (*this)();
         }
         return true;
     }

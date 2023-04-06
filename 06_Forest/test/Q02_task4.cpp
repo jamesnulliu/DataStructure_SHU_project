@@ -15,16 +15,15 @@ bool S02::solve(const std::string& fileLoc, int option) const {
     while (true) {
         Tree<char> tree;
         tree.build(filein);
-        if (tree.get_root() == nullptr) break;
+        if (tree.get_root() == nullptr) {
+            if (!filein.eof()) { continue; }
+            else { break; }
+        }
         forest.insert(tree);
     }
     sgc::cout(6) << "[Result] ";
     switch (option)
     {
-    case 0: {
-        return false;
-        break;
-    }
     case 1: {
         forest.preorder_visit();
         break;
