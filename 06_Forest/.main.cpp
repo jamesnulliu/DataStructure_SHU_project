@@ -80,5 +80,5 @@ int main()
     window.add_option('1', "Task 6 - Food Chain", S01::getInstance());
     window.add_option('2', "Task 4 - Forest, child, sibling", S02::getInstance());
     window.run_loop();
-    std::cin.get();
+    return 0;
 }

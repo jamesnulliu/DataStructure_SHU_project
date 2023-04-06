@@ -25,6 +25,9 @@ protected:
 public:
     Tree_binary() = default;
     Tree_binary(const Tree<_ElemTy>& tree) { transfer(tree, _root); }
+    Tree_binary(const Tree_binary<_ElemTy>& tree) {
+        _root = rec_build(tree.get_root());
+    }
 
     void transfer(const Tree<_ElemTy>& sourceTree, NodePtr& destRoot) {
         auto sourceRoot = sourceTree.get_root();
@@ -66,6 +69,8 @@ protected:
     NodePtr rec_build(std::vector<std::shared_ptr<TreeNode<_ElemTy>>>::const_iterator tnode,
         std::vector<std::shared_ptr<TreeNode<_ElemTy>>>::const_iterator end);
 
+    NodePtr rec_copy(NodePtr troot);
+
     void rec_count_leaves(const_NodePtr root, int64_t& cnt) const;
 
     int64_t rec_count_height(const_NodePtr root) const;
@@ -83,6 +88,14 @@ Tree_binary<_ElemTy>::NodePtr Tree_binary<_ElemTy>::rec_build(
     return btnode;
 }
 
+template<class _ElemTy>
+Tree_binary<_ElemTy>::NodePtr Tree_binary<_ElemTy>::rec_copy(NodePtr troot) {
+    if (troot == nullptr) return nullptr;
+    NodePtr node = new Node{ troot->data };
+    node->child = rec_copy(troot->child);
+    node->sibling = rec_copy(troot->sinbling);
+    return node;
+}
 template<class _ElemTy>
 void Tree_binary<_ElemTy>::rec_count_leaves(const_NodePtr root, int64_t& cnt) const {
     if (root == nullptr) { return; }
