@@ -4,6 +4,8 @@
 #include "08_Serach/Search_04.hpp"
 #include "08_Serach/Search_07.hpp"
 #include "09_Sort/Sort_01.hpp"
+#include "09_Sort/Sort_04.hpp"
+#include "09_Sort/Sort_06.hpp"
 #include "UserInterface/Main.hpp"
 #include "Tools/Random.hpp"
 
@@ -35,7 +37,9 @@ int main()
         dsp::Proj{
             "Sort",
             {
-                &dsp::sort::Task01::getSolution()
+                &dsp::sort::Task01::getSolution(),
+                &dsp::sort::Task04::getSolution(),
+                &dsp::sort::Task06::getSolution()
             }
         }
     );

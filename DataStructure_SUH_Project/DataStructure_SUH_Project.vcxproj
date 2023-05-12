@@ -128,6 +128,9 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,10 +144,11 @@
     <ClCompile Include="08_Serach\Search_04.cpp" />
     <ClCompile Include="08_Serach\Search_07.cpp" />
     <ClCompile Include="09_Sort\Sort_01.cpp" />
+    <ClCompile Include="09_Sort\Sort_04.cpp" />
+    <ClCompile Include="09_Sort\Sort_06.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="07_Graph\S01_task8.cpp" />
     <ClCompile Include="07_Graph\S02_task5.cpp" />
-    <ClCompile Include="Tools\ColorIO.cpp" />
     <ClCompile Include="Tools\ConsoleSetting.cpp" />
     <ClCompile Include="Tools\Random.cpp" />
   </ItemGroup>
@@ -162,7 +166,10 @@
     <ClInclude Include="08_Serach\Search_02.hpp" />
     <ClInclude Include="08_Serach\Search_04.hpp" />
     <ClInclude Include="08_Serach\Search_07.hpp" />
+    <ClInclude Include="09_Sort\Linked_list.hpp" />
     <ClInclude Include="09_Sort\Sort_01.hpp" />
+    <ClInclude Include="09_Sort\Sort_04.hpp" />
+    <ClInclude Include="09_Sort\Sort_06.hpp" />
     <ClInclude Include="Tools\ColorIO.hpp" />
     <ClInclude Include="Tools\ConsoleSetting.hpp" />
     <ClInclude Include="Tools\Random.hpp" />
@@ -170,6 +177,7 @@
     <ClInclude Include="UserInterface\Main.hpp" />
     <ClInclude Include="UserInterface\Proj.hpp" />
     <ClInclude Include="UserInterface\Solution.hpp" />
+    <ClInclude Include="UserInterface\OptionSwitcher.hpp" />
     <ClInclude Include="UserInterface\Window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

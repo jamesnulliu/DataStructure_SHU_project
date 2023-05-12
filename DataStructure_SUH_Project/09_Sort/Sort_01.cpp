@@ -1,70 +1,70 @@
-#include "../Tools/ColorIO.hpp"
+﻿#include "../Tools/ColorIO.hpp"
 #include "../Tools/Random.hpp"
 #include "../Tools/TimeCounter.hpp"
+#include "../UserInterface/OptionSwitcher.hpp"
 #include "Sort_01.hpp"
 
 namespace dsp {
     namespace sort {
         void Task01::solve()
         {
-            char option{};
-            sgc::cout() << "1. Input a seq and test.\n"
-                << "2. Generate a random seq and test.\n"
-                << "0. Go back to solution list\n";
-            newLine();
-            sgc::cout(6) << "Enter option: ";
-            while (true) {
-                sgc::cin(2) >> option;
-                sgc::flushInputBuffer();
-                if (option == '0') return;
-                if (option == '1' || option == '2') break;
-                sgc::cout(6) << "Wrong input, try again!\nEnter option: ";
-            }
-            newLine();
-            std::vector<int> data{};
-            if (option == '1') {
+            sgc::setConColor();
+            OptionSwitcher<char> ops({
+                    { '0', "Go back to solution list." },
+                    { '1', "Input a seq and test." },
+                    { '2', "Generate a random seq and test." }
+                });
+
+            char option{ ops() };
+            std::vector<int> data{}, data_copy{};
+
+            if (option == '0') {
+                return;
+            } else if (option == '1') {
                 int elem{};
-                sgc::cout(6) << "Enter a seq of integers, ended with Ctrl^Z:\n";
-                sgc::setConColor();
-                while (std::cin.good()) {
-                    std::cin >> elem;
-                };
+                sgc::cout() << "Enter a seq of integers, ended with q:\n";
+                sgc::cout() << ">>> ";
+                sgc::setConColor(4);
+                while (std::cin >> elem) {};
                 sgc::flushInputBuffer();
             } else {
                 Rand_Normal<int> rand;
                 int num{};
                 double mean{}, sigma{};
-                sgc::cout(6) << "Enter number of elements to generate, mean, and sigma:\n";
-                sgc::setConColor();
-                std::cin >> num >> mean >> sigma;
+                sgc::cout() << "Enter number of elements to generate, mean, and sigma:\n";
+                sgc::cout() << ">>> ";
+                sgc::cin(4) >> num >> mean >> sigma;
                 sgc::flushInputBuffer();
                 for (int i = 0; i < num; ++i) {
                     data.push_back(rand(mean, sigma));
                 }
-                sgc::cout(6) << "Data generation finished.\n";
             }
-
-            std::vector<int> dataCopy = data;
+            data_copy = data;
+            sgc::cout() << "Data generation finished.\n";
+            newLine();
+            sgc::cout() << "Sorting...\n";
+            newLine();
 
             TimeCounter counter;
+
             counter.startCounting();
             countingSort(data);
             counter.endCounting();
-            sgc::cout() << "Counting sort finished, cost " << counter.msecond() << "ms.\n";
-
+            sgc::cout() << "* Counting sort finished, cost " << counter.msecond() << "ms.\n";
             counter.init();
             counter.startCounting();
-            std::ranges::sort(dataCopy);
+            std::ranges::sort(data_copy);
             counter.endCounting();
-            sgc::cout() << "std::sort finished, cost " << counter.msecond() << "ms.\n";
+            sgc::cout() << "* std::sort finished, cost " << counter.msecond() << "ms.\n";
 
             newLine();
 
-            if (dataCopy == data) {
+            if (data_copy == data) {
                 sgc::cout(2) << "Sorting result is correct.\n";
             } else {
                 sgc::cout(3) << "Sorting result is incorrect.\n";
             }
+            sgc::cout() << "Press Enter to go back to option list: ";
             std::cin.get();
         }
 

@@ -50,7 +50,7 @@ public:
 
 private:
     // @brief Return average duration in {resultList}.
-    clock_t calAverage() { return std::accumulate(resultList.begin(), resultList.end(), 0L) / resultList.size(); }
+    clock_t calAverage() { return clock_t(std::accumulate(resultList.begin(), resultList.end(), 0L) / resultList.size()); }
     bool whetherStart = false;
     clock_t time1 = 0L;
     clock_t time2 = 0L;

@@ -42,7 +42,7 @@ namespace dsp {
         {
             sgc::cout(6) << "Input File location: ";
             std::string fileLocation{};
-            sgc::setConColor(2);
+            sgc::setConColor();
             std::getline(std::cin, fileLocation);
 
             if (fileLocation.front() == '\"') fileLocation.erase(fileLocation.begin());
