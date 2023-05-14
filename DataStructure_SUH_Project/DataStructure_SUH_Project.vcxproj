@@ -167,6 +167,7 @@
     <ClInclude Include="08_Serach\Search_04.hpp" />
     <ClInclude Include="08_Serach\Search_07.hpp" />
     <ClInclude Include="09_Sort\Linked_list.hpp" />
+    <ClInclude Include="Tools\MySort\MySort.hpp" />
     <ClInclude Include="09_Sort\Sort_01.hpp" />
     <ClInclude Include="09_Sort\Sort_04.hpp" />
     <ClInclude Include="09_Sort\Sort_06.hpp" />

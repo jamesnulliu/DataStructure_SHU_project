@@ -10,7 +10,7 @@ namespace dsp {
         {
             sgc::setConColor();
             OptionSwitcher<char> ops({
-                    { '0', "Go back to solution list." },
+                    { 'q', "Go back to solution list." },
                     { '1', "Input a seq and test." },
                     { '2', "Generate a random seq and test." }
                 });
@@ -25,7 +25,9 @@ namespace dsp {
                 sgc::cout() << "Enter a seq of integers, ended with q:\n";
                 sgc::cout() << ">>> ";
                 sgc::setConColor(4);
-                while (std::cin >> elem) {};
+                while (std::cin >> elem) {
+                    data.push_back(elem);
+                };
                 sgc::flushInputBuffer();
             } else {
                 Rand_Normal<int> rand;

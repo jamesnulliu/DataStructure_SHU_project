@@ -16,7 +16,10 @@ int main()
         'a',
         dsp::Proj{
             "Graph",
-            {&graph::S01::getSolution(), &graph::S02::getSolution()}
+            {
+                &graph::S01::getSolution(),
+                &graph::S02::getSolution()
+            }
         }
     );
 
