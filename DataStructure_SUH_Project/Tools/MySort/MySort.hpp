@@ -5,6 +5,7 @@
 #include <random>
 #include <vector>
 #include <iostream>
+#include "../Random.hpp"
 
 class MySort
 {
@@ -229,7 +230,7 @@ private:
         auto x = *(seq + last); // The pivot.
         /*
         *                     {i}                       {j}
-        *                      ��                         ��
+        *                      ↓                         ↓
         * [ ...comp(elem, x)...o ] [ ...!comp(elem, x)...o ] [ ...unknown... ] {x}
         */
         index i = first - 1;
@@ -259,9 +260,9 @@ private:
     index partition_rand_Lomuto(_RandIt seq, index first, index last, const _Pr& comp)
     {
         // Get 3 index randomly in range of [first, last]:
-        index a = random_uniform(first, last);
-        index b = random_uniform(first, last);
-        index c = random_uniform(first, last);
+        index a = Rand_Uniform<index>{}(first, last);
+        index b = Rand_Uniform<index>{}(first, last);
+        index c = Rand_Uniform<index>{}(first, last);
         // Choose the median of the 3 randomly chosen elems:
         index mid = // index of the median
             (comp(*(seq + a), *(seq + b)) && comp(*(seq + b), *(seq + c))) ? b    // comp(A,B) and comp(B,C) => B is median
@@ -287,9 +288,9 @@ private:
     index* partition_rand_repit_Lomuto(_RandIt seq, index first, index last, const _Pr1& comp, const _Pr2& equal)
     {
         // Get 3 index randomly in range of [first, last]:
-        index a = random_uniform(first, last);
-        index b = random_uniform(first, last);
-        index c = random_uniform(first, last);
+        index a = Rand_Uniform<index>{}(first, last);
+        index b = Rand_Uniform<index>{}(first, last);
+        index c = Rand_Uniform<index>{}(first, last);
         // Choose the median of the 3 randomly chosen elems:
         index mid = // index of the median
             (comp(*(seq + a), *(seq + b)) && comp(*(seq + b), *(seq + c))) ? b    // comp(A,B) and comp(B,C) => B is median
@@ -304,7 +305,7 @@ private:
         * {i} is at the end of elems equal to {x}, left of (before) NOT{(bool)comp(elem,x)};
         * {j} is at the end of elems NOT{(bool)comp(elem,x)}, left of (before) unknown.
         *                   {eqLeft}                    {i}                       {j}
-        *                      ��                         ��                         ��
+        *                      ↓                         ↓                         ↓
         * [ ...comp(elem, x)...o ] [ ...equal(elem, x)...o ] [ ...!comp(elem, x)...o ] [ ...unknown... ] {x}
         */
         index eqLeft = first - 1;
@@ -332,9 +333,9 @@ private:
     /**
     * @brief Partition the array to 2 subarrays, any element in {seq[first : j]} is smaller (or larger)
             than any in {seq[j+1 : last]}.
-            Hoare��s scheme is more efficient than Lomuto��s partition scheme because it does three times fewer
+            Hoare's scheme is more efficient than Lomuto��s partition scheme because it does three times fewer
             swaps on average, and it creates efficient partitions even when all values are equal.
-            [*] The pivot��s final location is not necessarily at the index that was returned.
+            [*] The pivot's final location is not necessarily at the index that was returned.
             [*] If input array is already sorted, complexity will also degrade to O(n^2).
     * @comp  O(n)
     * @param first -The index of the first element in {seq}.
@@ -361,9 +362,9 @@ private:
     /**
     * @brief Partition the array to 2 subarrays, any element in {seq[first : j]} is smaller (or larger)
             than any in {seq[j+1 : last]}.
-            Hoare��s scheme is more efficient than Lomuto��s partition scheme because it does three times fewer
+            Hoare's scheme is more efficient than Lomuto's partition scheme because it does three times fewer
             swaps on average, and it creates efficient partitions even when all values are equal.
-            [*] The pivot��s final location is not necessarily at the index that was returned.
+            [*] The pivot's final location is not necessarily at the index that was returned.
             [*] Pivot is chosen randomly, with the method: Median-of-3 Partition.
     * @comp  O(n)
     * @param first -The index of the first element in {seq}.
@@ -374,9 +375,9 @@ private:
     index partition_rand_Hoare(_RandIt seq, index first, index last, const _Pr1& comp1, const _Pr2& comp2)
     {
         // Get 3 index randomly in range of [first, last]:
-        index a = random_uniform(first, last);
-        index b = random_uniform(first, last);
-        index c = random_uniform(first, last);
+        index a = Rand_Uniform<index>{}(first, last);
+        index b = Rand_Uniform<index>{}(first, last);
+        index c = Rand_Uniform<index>{}(first, last);
         // Choose the median of the 3 randomly chosen elems:
         index mid = // index of the median
             (comp1(*(seq + a), *(seq + b)) && comp1(*(seq + b), *(seq + c))) ? b    // comp(A,B) and comp(B,C) => B is median
@@ -421,43 +422,6 @@ public:
 
 // RADIX SORT @{
 // @} RADIX SORT END
-
-// RAND NUMBER GENERATOE @{
-public:
-    template<class _Ty = void> _Ty random_uniform(_Ty, _Ty) = delete;
-    template<> int64 random_uniform<int64>(int64 min, int64 max)
-    {
-        // A random number engine based on Mersenne Twister algorithm:
-        static std::default_random_engine engine(_rd());
-        std::uniform_int_distribution<int64> distribution(min, max);
-        return distribution(engine);
-    }
-    template<> int32 random_uniform<int32>(int32 min, int32 max) {
-        // A random number engine based on Mersenne Twister algorithm:
-        static std::default_random_engine engine(_rd());
-        std::uniform_int_distribution<int32> distribution(min, max);
-        return distribution(engine);
-    }
-    template<> double random_uniform<double>(double min, double max) {
-        // A random number engine based on Mersenne Twister algorithm:
-        static std::default_random_engine engine(_rd());
-        std::uniform_real_distribution<double> distribution(min, max);
-        return distribution(engine);
-    }
-    template<class _Ty = void> _Ty random_normal(double, double) = delete;
-    template<> double random_normal<double>(double mean, double sigma) {
-        // A random number engine based on Mersenne Twister algorithm:
-        static std::default_random_engine engine(_rd());
-        std::normal_distribution<double> distribution(mean, sigma);
-        return distribution(engine);
-    }
-    template<> int64 random_normal<int64>(double mean, double sigma) {
-        return (int64)std::lround(random_normal<double>(mean, sigma));
-    }
-private:
-    // Obtain a seed for the random number engine:
-    std::random_device _rd;
-// @} RAND NUMBER GENERATOR END
 
 // OTHER TOOLS @{
 public:

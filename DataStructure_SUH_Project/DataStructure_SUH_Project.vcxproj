@@ -151,6 +151,7 @@
     <ClCompile Include="07_Graph\S02_task5.cpp" />
     <ClCompile Include="Tools\ConsoleSetting.cpp" />
     <ClCompile Include="Tools\Random.cpp" />
+    <ClCompile Include="UserInterface\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="07_Graph\GrpahSolutions.h" />

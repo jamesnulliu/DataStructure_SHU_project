@@ -24,7 +24,9 @@ namespace dsp {
             for (auto& optionPair : _optionMap) {
                 std::cout << '[' << optionPair.first << "] " << optionPair.second << '\n';
             }
+            sgc::setConColor(6);
             printf("\nPlease choose an option: ");
+            sgc::setConColor();
             _OpTy option{};
             sgc::cin(4) >> option;
             while (std::cin.fail() || _optionMap.count(option) == 0) {
