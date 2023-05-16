@@ -1,7 +1,10 @@
 ﻿#include <iostream>
 #include <queue>
+<<<<<<< HEAD
 #include <numeric>
 
+=======
+>>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
 #include "Linked_list.hpp"
 #include "Sort_04.hpp"
 #include "../UserInterface/OptionSwitcher.hpp"
@@ -15,11 +18,19 @@ namespace dsp {
     namespace sort {
         template<class ElemType>
         ListNode<ElemType>* find_sorted_lastNode(ListNode<ElemType>* Node) {
+<<<<<<< HEAD
             ListNode<ElemType>* nextNode = Node->_Next;
             while (nextNode != nullptr && nextNode->_Data >= Node->_Data) {    //有序则递归寻找
                 Node = nextNode;
                 nextNode = nextNode->_Next;
             }
+=======
+            if (Node == nullptr) return Node;
+            if (Node->_Next == nullptr)	return Node;   //此时结点已是有序部分尾部
+            ListNode<ElemType>* nextNode = Node->_Next;
+            if (nextNode->_Data >= Node->_Data)    //有序则递归寻找
+                return find_sorted_lastNode(nextNode);
+>>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
             return Node;                   //下一结点数值比当前小，则当前结点为有序部分最后一个结点
         }
 
@@ -96,9 +107,13 @@ namespace dsp {
             OptionSwitcher<char> ops({
                     {'q', "Go back to soltuion list"},
                     {'1', "Input a seq and test."},
+<<<<<<< HEAD
                     {'2', "Generate a random seq and test"},
                     {'3', "Generate a seq from {start} to {end}"},
                     {'4', "Generate a seq from {end} to {start}"}
+=======
+                    {'2', "Generate a random seq and test"}
+>>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
                 });
 
             char option{ ops() };
@@ -125,6 +140,7 @@ namespace dsp {
                 sgc::cout() << ">>> ";
                 sgc::cin(4) >> elemNum >> mean >> sigma;
                 sgc::flushInputBuffer();
+<<<<<<< HEAD
                 for (int i = 0; i < elemNum; ++i) {
                     data.push_back(rand(mean, sigma));
                 }
@@ -153,6 +169,15 @@ namespace dsp {
                 data.resize(size_t(end - start + 1), 0);
                 std::iota(data.begin(), data.end(), start);
                 std::reverse(data.begin(), data.end());
+=======
+                newLine();
+                sgc::setConColor();
+                data = rand.generateVec(elemNum, mean, sigma);
+                newLine();
+                sgc::setConColor(0);
+                DistVisualizer<int>()(data);
+                sgc::setConColor();
+>>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
                 break;
             }
             default: { return; break; }
