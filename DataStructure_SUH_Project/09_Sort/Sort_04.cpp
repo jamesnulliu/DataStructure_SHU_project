@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <queue>
+#include <numeric>
+
 #include "Linked_list.hpp"
 #include "Sort_04.hpp"
 #include "../UserInterface/OptionSwitcher.hpp"
@@ -13,11 +15,11 @@ namespace dsp {
     namespace sort {
         template<class ElemType>
         ListNode<ElemType>* find_sorted_lastNode(ListNode<ElemType>* Node) {
-            if (Node == nullptr) return Node;
-            if (Node->_Next == nullptr)	return Node;   //此时结点已是有序部分尾部
             ListNode<ElemType>* nextNode = Node->_Next;
-            if (nextNode->_Data >= Node->_Data)    //有序则递归寻找
-                return find_sorted_lastNode(nextNode);
+            while (nextNode != nullptr && nextNode->_Data >= Node->_Data) {    //有序则递归寻找
+                Node = nextNode;
+                nextNode = nextNode->_Next;
+            }
             return Node;                   //下一结点数值比当前小，则当前结点为有序部分最后一个结点
         }
 
@@ -94,7 +96,9 @@ namespace dsp {
             OptionSwitcher<char> ops({
                     {'q', "Go back to soltuion list"},
                     {'1', "Input a seq and test."},
-                    {'2', "Generate a random seq and test"}
+                    {'2', "Generate a random seq and test"},
+                    {'3', "Generate a seq from {start} to {end}"},
+                    {'4', "Generate a seq from {end} to {start}"}
                 });
 
             char option{ ops() };
@@ -124,6 +128,31 @@ namespace dsp {
                 for (int i = 0; i < elemNum; ++i) {
                     data.push_back(rand(mean, sigma));
                 }
+                break;
+            }
+            case '3': {
+                sgc::cout() << "Enter {start} and {end}:\n";
+                sgc::cout() << ">>> ";
+                int start{}, end{};
+                sgc::cin(4) >> start >> end;
+                sgc::flushInputBuffer();
+                if (start > end) return;
+                elemNum = end - start + 1;
+                data.resize(size_t(end - start + 1), 0);
+                std::iota(data.begin(), data.end(), start);
+                break;
+            }
+            case '4': {
+                sgc::cout() << "Enter {end} and {start}:\n";
+                sgc::cout() << ">>> ";
+                int start{}, end{};
+                sgc::cin(4) >> end >> start;
+                sgc::flushInputBuffer();
+                if (start > end) return;
+                elemNum = end - start + 1;
+                data.resize(size_t(end - start + 1), 0);
+                std::iota(data.begin(), data.end(), start);
+                std::reverse(data.begin(), data.end());
                 break;
             }
             default: { return; break; }
