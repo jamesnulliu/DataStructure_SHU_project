@@ -37,14 +37,6 @@ namespace dsp {
                 sgc::cout() << ">>> ";
                 sgc::cin(4) >> num >> mean >> sigma;
                 sgc::flushInputBuffer();
-<<<<<<< HEAD
-                for (int i = 0; i < num; ++i) {
-                    data.push_back(rand(mean, sigma));
-                }
-            }
-            data_copy = data;
-            sgc::cout() << "Data generation finished.\n";
-=======
                 newLine();
                 sgc::setConColor();
                 data = rand.generateVec(num, mean, sigma);
@@ -53,7 +45,6 @@ namespace dsp {
             newLine();
             sgc::setConColor(0);
             DistVisualizer<int>{}(data);
->>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
             newLine();
             sgc::cout() << "Sorting...\n";
             newLine();

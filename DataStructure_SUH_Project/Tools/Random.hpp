@@ -1,12 +1,8 @@
 #pragma once
 #include <random>
-<<<<<<< HEAD
-#include <vector>
-=======
 #include <iostream>
 #include <vector>
 #include <numeric>
->>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
 
 template<class _ValTy>
     requires std::is_same<_ValTy, int>::value || std::is_same<_ValTy, long long>::value || std::is_same<_ValTy, double>::value
@@ -23,10 +19,7 @@ public:
     {
         std::vector<_ValTy> vec;
         while (size--) { vec.push_back(this->operator()(min, max)); }
-<<<<<<< HEAD
-=======
         puts("[Rand_Uniform] Data Generation Finished.");
->>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
         return vec;
     }
 
@@ -57,10 +50,7 @@ public:
     {
         std::vector<_ValTy> vec;
         while (size--) { vec.push_back(this->operator()(mean, sigma)); }
-<<<<<<< HEAD
-=======
         puts("[Rand_Normal] Data Generation Finished.");
->>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
         return vec;
     }
 
@@ -74,9 +64,6 @@ template<class _ValTy>
 std::random_device Rand_Normal<_ValTy>::_rd{};
 template<class _ValTy>
     requires std::is_same<_ValTy, int>::value || std::is_same<_ValTy, long long>::value || std::is_same<_ValTy, double>::value
-<<<<<<< HEAD
-std::default_random_engine Rand_Normal<_ValTy>::_engine{ _rd() };
-=======
 std::default_random_engine Rand_Normal<_ValTy>::_engine{ _rd() };
 
 template<class _ValTy>
@@ -121,4 +108,3 @@ public:
         return;
     }
 };
->>>>>>> 8724d35bb21e783026edb28b0145ee37aff5a9dc
