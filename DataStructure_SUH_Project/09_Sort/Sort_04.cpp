@@ -128,6 +128,11 @@ namespace dsp {
                 for (int i = 0; i < elemNum; ++i) {
                     data.push_back(rand(mean, sigma));
                 }
+                newLine();
+                sgc::setConColor(0);
+                DistVisualizer<int>{}(data);
+                sgc::setConColor();
+                newLine();
                 break;
             }
             case '3': {
